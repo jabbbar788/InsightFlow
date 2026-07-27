@@ -274,11 +274,50 @@ button {
   color: #16A34A;
 }
 
+.chart-shell {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  padding: 8px 16px 16px;
+}
+
+.chart-y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 32px;
+  padding: 8px 0 10px;
+  font-size: 11px;
+  color: #6B7280;
+}
+
+.chart-area {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  padding-top: 4px;
+}
+
+.chart-grid-lines {
+  position: absolute;
+  inset: 0 0 2px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.chart-grid-line {
+  border-top: 1px solid #E5E7EB;
+}
+
 .bar-chart {
+  position: relative;
   display: flex;
   align-items: flex-end;
   gap: 6px;
-  height: 120px;
+  height: 180px;
+  padding-bottom: 8px;
 }
 
 .bar-column {
@@ -286,12 +325,22 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
+  min-width: 0;
+}
+
+.bar-track {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 .bar {
   width: 100%;
-  border-radius: 4px 4px 0 0;
+  min-height: 14px;
+  border-radius: 6px 6px 0 0;
   background: #EEF2FF;
   transition: height 0.3s ease;
 }
@@ -300,13 +349,47 @@ button {
   background: #4F46E5;
 }
 
+.bar-value-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: #4F46E5;
+  margin-bottom: 4px;
+  min-height: 12px;
+}
+
 .bar-label {
   font-size: 10px;
   color: #6B7280;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .chart-shell {
+    flex-direction: column;
+    gap: 8px;
+    padding: 6px 12px 12px;
+  }
+
+  .chart-y-axis {
+    flex-direction: row;
+    justify-content: space-between;
+    min-width: auto;
+    padding: 0;
+    font-size: 10px;
+  }
+
+  .bar-chart {
+    gap: 4px;
+    height: 150px;
+  }
+
+  .bar-label {
+    font-size: 9px;
+  }
 }
 
 .category-row {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .category-label-row {
@@ -314,6 +397,19 @@ button {
   justify-content: space-between;
   font-size: 13px;
   margin-bottom: 4px;
+  gap: 8px;
+}
+
+.category-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6B7280;
+  font-size: 12px;
+}
+
+.category-count {
+  color: #6B7280;
 }
 
 .category-pct {
@@ -322,15 +418,33 @@ button {
 }
 
 .category-bar-bg {
-  height: 6px;
+  position: relative;
+  height: 8px;
   background: #E5E7EB;
   border-radius: 4px;
+  overflow: hidden;
 }
 
 .category-bar {
   height: 100%;
   background: #4F46E5;
   border-radius: 4px;
+}
+
+.category-marker {
+  position: absolute;
+  top: -3px;
+  width: 1px;
+  height: 14px;
+  background: #D1D5DB;
+}
+
+.category-scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  color: #6B7280;
+  margin-top: 4px;
 }
 
 .upload-card,
